@@ -36,3 +36,36 @@ public:
         }
     }
 };
+
+// fungsi-fungsi utama
+
+// Tampilkan Semua Data dari File (Read)
+void tampilkanGudang() {
+    ifstream infile;
+    infile.open("gudang.txt");
+    
+    cout << "\n=== DAFTAR BARANG DI GUDANG ===" << endl;
+    if (infile.is_open()) {
+        string baris;
+        int nomor = 1;
+        bool adaData = false;
+        
+        // Membaca file baris demi baris seperti di contoh StreamReaderandWriter.jpg
+        while (getline(infile, baris)) {
+            if (!baris.empty()) {
+                cout << nomor << ". " << baris << endl;
+                nomor++;
+                adaData = true;
+            }
+        }
+        
+        if (!adaData) {
+            cout << "[Gudang Kosong / Belum ada data]" << endl;
+        }
+        infile.close();
+    } else {
+        // Jika file belum ada, otomatis dianggap kosong
+        cout << "[Gudang Kosong / File belum dibuat]" << endl;
+    }
+    cout << "===============================" << endl;
+}
