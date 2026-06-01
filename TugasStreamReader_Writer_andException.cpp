@@ -233,3 +233,54 @@ void simulasiEtalase(TokoElektronik& toko) {
     }
     cout << "====================================================\n" << endl;
 }
+
+int main() {
+    TokoElektronik gibranJaya; // Instansiasi objek kelas
+    int pilihanMenu;
+
+    // Loop Menu Utama CLI interaktif (Menggunakan do-while)
+    do {
+        // Sesuai ketentuan: Tampilkan data secara otomatis saat menu dibuka
+        tampilkanGudang();
+        
+        cout << "\n===== MENU MANAJEMEN TOKO \"GIBRAN JAYA\" =====" << endl;
+        cout << "1. Tambah Barang Gudang (Create)" << endl;
+        cout << "2. Ubah Barang Gudang (Update)" << endl;
+        cout << "3. Hapus Barang Gudang (Delete)" << endl;
+        cout << "4. Jalankan Simulasi Etalase (Exception Handling)" << endl;
+        cout << "5. Keluar Aplikasi" << endl;
+        cout << "Pilih opsi menu (1-5): ";
+        cin >> pilihanMenu;
+        
+        switch (pilihanMenu) {
+            case 1:
+                tambahBarang();
+                break;
+            case 2:
+                updateBarang();
+                break;
+            case 3:
+                hapusBarang();
+                break;
+            case 4:
+                simulasiEtalase(gibranJaya);
+                break;
+            case 5:
+                cout << "\nTerima kasih telah menggunakan sistem Gibran Jaya!" << endl;
+                break;
+            default:
+                cout << "\nPilihan tidak valid! Silakan masukkan angka 1-5." << endl;
+                break;
+        }
+        
+        // Penahan jeda menu biar rapi sebelum looping balik
+        if (pilihanMenu != 5) {
+            cout << "\nTekan Enter untuk kembali ke menu utama...";
+            cin.ignore();
+            cin.get();
+        }
+
+    } while (pilihanMenu != 5);
+
+    return 0;
+}
